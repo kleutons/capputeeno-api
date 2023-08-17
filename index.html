@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fake API Capputeeno</title>
+</head>
+<body>
+  <h1>Products</h1>
+  <div id="products"></div>
+
+  <script>
+    fetch('https://my-json-server.typicode.com/kleutons/api-capputeeno')
+      .then(response => response.json())
+      .then(data => {
+        const productsDiv = document.getElementById('products');
+        data.forEach(product => {
+          const productElement = document.createElement('p');
+          productElement.textContent = product.name; // Assuming each product has a "name" property
+          productsDiv.appendChild(productElement);
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  </script>
+</body>
